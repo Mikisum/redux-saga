@@ -6,15 +6,15 @@ import './index.css';
 import store from './redux/store';
 import reportWebVitals from './reportWebVitals';
 
-
-const root = ReactDOM.createRoot(document.getElementById('root'))
+const container = document.getElementById('root');
+const root = ReactDOM.createRoot(container);
 
 root.render(
-  <React.StrictMode >
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode >
+
+  <Provider store={store}>
+    <App />
+  </Provider>
+
 )
 
 
