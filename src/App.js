@@ -1,21 +1,22 @@
 import { useDispatch, useSelector } from "react-redux";
 import { News } from "./components/news/News";
-import { getLatestNews } from "./redux/actions/actions";
+import { getNews } from "./redux/actions/actions";
 
 const App = () => {
-  // const count = useSelector(store => store?.counter?.count || 0);
-  const latestNews = useSelector(store => store?.news?.latestNews || [])
-  const count = useSelector(state => state.counter.count || 0)
+
+  const { latestNews, popularNews } = useSelector(store => store?.news || {})
   const dispatch = useDispatch()
 
-  const handleGetLatestNews = () => {
-    dispatch(getLatestNews())
+  const handleNews = () => {
+    dispatch(getNews())
   }
 
   return (
     <div>
-      <button onClick={handleGetLatestNews}>Get News</button>
-      <News news={latestNews} />
+      <button onClick={handleNews}>Get News</button>
+      <News news={latestNews} title='Latest News' />
+      <News news={popularNews} title='Popular News' />
+
     </div>
   )
 }
